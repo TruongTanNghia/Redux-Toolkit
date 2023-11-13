@@ -8,6 +8,7 @@ const View = () => {
   const dispatch = useDispatch();
   //* lấy giá trị của id
   const { id } = useParams();
+  console.log(id, "view");
   useEffect(() => {
     dispatch(getDetailContact(id));
   }, [id]);

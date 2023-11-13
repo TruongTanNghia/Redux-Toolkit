@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 import "../styles/Home.css";
 const Home = () => {
   const { contacts, contactDetail } = useSelector(GetContacts);
+  console.log(contacts);
   const dispatch = useDispatch();
   const handleGetContact = (id) => {
     console.log(id);
@@ -18,11 +19,10 @@ const Home = () => {
     console.log(id);
     dispatch(deleteContact(id));
   };
-  const handleUpdateContact = (id) => {
-    console.log(id);
-    dispatch(updateContact(id));
-  };
-  console.log(contactDetail, "Get detail");
+  // const handleUpdateContact = (id) => {
+  //   console.log(id);
+  //   dispatch(updateContact(id));
+  // };
 
   return (
     <>
@@ -49,14 +49,9 @@ const Home = () => {
                   <td>{item.phone}</td>
                   <td>{item.status}</td>
                   <td>
-                    <button
-                      onClick={() => {
-                        handleUpdateContact(item.id);
-                      }}
-                      className="btn btn-edit"
-                    >
-                      Edit
-                    </button>
+                    <Link to={`/update/${item.id}`}>
+                      <button className="btn btn-edit">Edit</button>
+                    </Link>
                     <button
                       onClick={() => {
                         handleDeleteContact(item.id);

@@ -32,9 +32,12 @@ const TodoSlice = createSlice({
       const newData = { ...action.payload, id: uuidv4() };
       state.contacts = [...state.contacts, newData];
     },
+
     updateContact: (state, action) => {
       state.contacts = state.contacts.map((item) =>
-        item.id === action.payload.id ? action.payload : item
+        item.id.toString() === action.payload.id.toString()
+          ? action.payload
+          : item
       );
     },
   },
